@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon-Bq3WgQx1.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aircraft Planning Constraints — Timothy Desouza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/airbus-CGMtX2YN.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/lucide-3ihqAIt-.js">
+  <link rel="stylesheet" crossorigin href="/assets/lucide-DVRzgxek.css">
+</head>
+<body>
+
+  <!-- MOBILE TOP BAR -->
+  <div class="topbar" id="topbar">
+    <a href="index.html" class="topbar-logo" aria-label="Timothy DeSouza — Home">
+      <svg width="46" height="27" viewBox="0 0 68 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip_topbar)"><path d="M16.197 40C13.8258 40 11.8377 39.5987 10.2326 38.7962C8.66393 37.9936 7.49658 36.8263 6.7305 35.2941C5.96443 33.7255 5.58139 31.792 5.58139 29.4938V17.8386H2.73598C1.86046 17.8386 1.18559 17.6197 0.711354 17.1819C0.237118 16.7077 0 16.0693 0 15.2667C0 14.4277 0.237118 13.7893 0.711354 13.3516C1.18559 12.9138 1.86046 12.6949 2.73598 12.6949H5.58139V7.71545C5.58139 6.58458 5.87323 5.72731 6.45691 5.14363C7.07706 4.55996 7.93433 4.26812 9.02873 4.26812C10.1231 4.26812 10.9622 4.55996 11.5458 5.14363C12.1295 5.72731 12.4213 6.58458 12.4213 7.71545V12.6949H18.2216C19.0971 12.6949 19.772 12.9138 20.2462 13.3516C20.7205 13.7893 20.9576 14.4277 20.9576 15.2667C20.9576 16.0693 20.7205 16.7077 20.2462 17.1819C19.772 17.6197 19.0971 17.8386 18.2216 17.8386H12.4213V29.1108C12.4213 30.8618 12.8044 32.1751 13.5704 33.0506C14.3365 33.9261 15.5768 34.3639 17.2914 34.3639C17.9115 34.3639 18.4587 34.3091 18.933 34.1997C19.4072 34.0903 19.8267 34.0173 20.1915 33.9808C20.6293 33.9444 20.9941 34.0903 21.2859 34.4186C21.5777 34.7104 21.7237 35.3306 21.7237 36.279C21.7237 37.0086 21.596 37.6653 21.3406 38.249C21.1217 38.7962 20.7022 39.1792 20.0821 39.3981C19.6078 39.544 18.9877 39.6717 18.2216 39.7811C17.4555 39.927 16.7807 40 16.197 40Z" fill="#e0e0e0"/><path d="M29.5751 7.22297C28.2983 7.22297 27.2951 6.91289 26.5655 6.29274C25.8724 5.63611 25.5258 4.74235 25.5258 3.61148C25.5258 2.44413 25.8724 1.55038 26.5655 0.930222C27.2951 0.310069 28.2983 -7.62939e-06 29.5751 -7.62939e-06C30.8883 -7.62939e-06 31.8915 0.310069 32.5846 0.930222C33.2777 1.55038 33.6243 2.44413 33.6243 3.61148C33.6243 4.74235 33.2777 5.63611 32.5846 6.29274C31.8915 6.91289 30.8883 7.22297 29.5751 7.22297Z" fill="#e0e0e0"/><path d="M29.464 39.8905C28.3696 39.8905 27.5306 39.5987 26.9469 39.015C26.3633 38.3949 26.0714 37.5194 26.0714 36.3885V15.7045C26.0714 14.5736 26.3633 13.7164 26.9469 13.1327C27.5306 12.549 28.3514 12.2572 29.4093 12.2572C30.4672 12.2572 31.288 12.549 31.8717 13.1327C32.4554 13.7164 32.7472 14.5736 32.7472 15.7045V19.699L32.1453 18.0574C32.8749 16.2335 34.0058 14.7925 35.5379 13.7346C37.0701 12.6767 38.894 12.1477 41.0099 12.1477C43.1622 12.1477 44.9314 12.6584 46.3177 13.6799C47.7039 14.7013 48.6706 16.2699 49.2178 18.3858H48.4517C49.1813 16.4523 50.3851 14.9384 52.0632 13.844C53.7413 12.7132 55.6747 12.1477 57.8635 12.1477C59.9063 12.1477 61.5844 12.549 62.8977 13.3516C64.2474 14.1541 65.2506 15.3762 65.9073 17.0178C66.5639 18.6229 66.8922 20.6657 66.8922 23.1464V36.3885C66.8922 37.5194 66.5821 38.3949 65.962 39.015C65.3783 39.5987 64.5393 39.8905 63.4449 39.8905C62.3505 39.8905 61.5114 39.5987 60.9278 39.015C60.3441 38.3949 60.0523 37.5194 60.0523 36.3885V23.42C60.0523 21.3771 59.7057 19.8814 59.0126 18.933C58.356 17.9845 57.2251 17.5102 55.62 17.5102C53.8325 17.5102 52.428 18.1486 51.4066 19.4254C50.3852 20.6657 49.8744 22.3985 49.8744 24.6238V36.3885C49.8744 37.5194 49.5826 38.3949 48.9989 39.015C48.4152 39.5987 47.5762 39.8905 46.4818 39.8905C45.3874 39.8905 44.5302 39.5987 43.91 39.015C43.3263 38.3949 43.0345 37.5194 43.0345 36.3885V23.42C43.0345 21.3771 42.6879 19.8814 41.9948 18.933C41.3382 17.9845 40.2255 17.5102 38.6569 17.5102C36.8694 17.5102 35.465 18.1486 34.4435 19.4254C33.4221 20.6657 32.9114 22.3985 32.9114 24.6238V36.3885C32.9114 38.7232 31.7623 39.8905 29.464 39.8905Z" fill="#e0e0e0"/></g><defs><clipPath id="clip_topbar"><rect width="67.1429" height="40" fill="white"/></clipPath></defs></svg>
+    </a>
+    <button class="topbar-toggle" id="topbar-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- PAGE LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <a href="index.html" class="cs-back">
+        <i data-lucide="arrow-left"></i> Back
+      </a>
+
+      <h1 class="cs-title">Aircraft planning constraints</h1>
+      <p class="sidebar-intro">Helping Airbus's A320 planning team capture, update, and trust their planning constraints.</p>
+
+      <div class="cs-meta">
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Role</span>
+          <span class="cs-meta-value">Lead UX/UI Designer</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Timeline</span>
+          <span class="cs-meta-value">8 weeks (Q4 2021)</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Team</span>
+          <span class="cs-meta-value">Product Owner, Planning Architect, Developer, Data Engineer x2</span>
+        </div>
+      </div>
+
+      <div class="cs-tags card-tags">
+        <span>UX/UI Design</span>
+        <span>Agency</span>
+        <span>Internal Dashboard</span>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- MOBILE HEADER (case study info, hidden on desktop) -->
+      <div class="cs-mobile-header">
+        <a href="index.html" class="cs-back">
+          <i data-lucide="arrow-left"></i> Back
+        </a>
+        <h1 class="cs-title">Aircraft planning constraints</h1>
+        <p class="sidebar-intro">Helping Airbus's A320 planning team capture, update, and trust their planning constraints.</p>
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Lead UX/UI Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Timeline</span>
+            <span class="cs-meta-value">8 weeks (Q4 2021)</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Team</span>
+            <span class="cs-meta-value">Product Owner, Planning Architect, Developer, Data Engineer x2</span>
+          </div>
+        </div>
+        <div class="cs-tags card-tags">
+          <span>UX/UI Design</span>
+          <span>Agency</span>
+          <span>Internal Dashboard</span>
+        </div>
+      </div>
+
+      <img src="/images/airbus_cover.png" alt="Aircraft planning constraints" class="cs-hero-img" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">TL;DR</h2>
+            <p class="cs-block-body">Airbus's A320 planning team had no single place to manage Planning Control Parameters (PCPs), the production constraints that govern how aircraft get built. PCPs lived across spreadsheets and printed PDFs, which led to operational impacts: higher costs, production delays, and more man-hours.</p>
+            <p class="cs-block-body">As part of Sopra Steria's UX agency, I helped the Airbus team <strong style="font-weight: 600;">define and build an MVP web app</strong> to centralise and manage these constraints. The MVP would serve as the starting point for streamlining planning cycles.</p>
+            <div class="cs-video-wrap" style="margin-top: 32px;">
+              <video class="cs-section-img" muted playsinline controls>
+                <source src="/videos/Create_PCP.mp4" type="video/mp4" />
+              </video>
+              <div class="cs-video-overlay"></div>
+              <div class="cs-video-flash" aria-hidden="true">
+                <svg class="cs-video-flash-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="6,3 20,12 6,21" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">Early insight</h2>
+            <p class="cs-block-body">One month after launch, early usage data from the PO showed some adoption within the A320 planning team. For context, there are 8 core teams working with over 100 defined PCPs - and that's just for the A320 aircraft programme.</p>
+            <div class="cs-stats">
+              <div class="cs-stat">
+                <span class="cs-stat-value">14</span>
+                <span class="cs-stat-label">PCPs written</span>
+              </div>
+              <div class="cs-stat">
+                <span class="cs-stat-value">1 team</span>
+                <span class="cs-stat-label">~40% of their PCPs recorded</span>
+              </div>
+              <div class="cs-stat">
+                <span class="cs-stat-value">4</span>
+                <span class="cs-stat-label">PCPs updated</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">Lacking a single source of truth</h2>
+            <p class="cs-block-body">PCPs are rules that define constraints in aircraft production planning (e.g. resource ceiling). They help coordinate resources efficiently, prevent conflicts, and build realistic schedules. The team faced several challenges when using them:</p>
+            <div class="cs-challenges">
+              <div class="cs-challenge">
+                <div class="cs-challenge-icon"><i data-lucide="database-zap"></i></div>
+                <div class="cs-challenge-text">
+                  <p class="cs-challenge-title">No single source of truth</p>
+                  <p class="cs-challenge-desc">Scattered across multiple business-owned tools (spreadsheets, printed docs) that didn't talk to each other.</p>
+                </div>
+              </div>
+              <div class="cs-challenge">
+                <div class="cs-challenge-icon"><i data-lucide="eye-off"></i></div>
+                <div class="cs-challenge-text">
+                  <p class="cs-challenge-title">Lack of transparency</p>
+                  <p class="cs-challenge-desc">Unclear which PCPs were up to date, still relevant, or in use.</p>
+                </div>
+              </div>
+              <div class="cs-challenge">
+                <div class="cs-challenge-icon"><i data-lucide="pencil"></i></div>
+                <div class="cs-challenge-text">
+                  <p class="cs-challenge-title">Manual and error-prone</p>
+                  <p class="cs-challenge-desc">Reliance on free-text fields and varying formats made it difficult to interpret constraints reliably.</p>
+                </div>
+              </div>
+            </div>
+            <p class="cs-block-body cs-block-body--spaced">The result: <span style="color: #FF6952;">higher costs</span>, <span style="color: #FF6952;">production delays</span>, and <span style="color: #FF6952;">more man-hours</span> than the work required.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">What I did &amp; key decisions</h2>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Planning the work</h3>
+            <p class="cs-block-body">As the sole external designer on this project, I was embedded within the A320 core planning squad. With the team fully distributed across the UK, Germany, and France, all sessions were run remotely.</p>
+            <p class="cs-block-body">The first thing I did was map out the engagement and share it with the project team at kick-off - so everyone knew what to expect, when their input was needed, and what we were working toward at each stage.</p>
+            <img src="/images/planning.png" alt="Planning the work" class="cs-block-img cs-block-img--white" />
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Understanding the problem</h3>
+            <p class="cs-block-body">I started by reviewing internal wikis and working closely with the Airbus PO to understand current ways of working. I then ran 9 user interviews across business stakeholders and technical users, keeping the format semi-structured to leave room for unexpected insights and demos.</p>
+            <p class="cs-block-body">From those sessions, I identified four key user groups, built proto-personas for each, and validated them with the planning team to surface assumptions and guide early design decisions.</p>
+            <img src="/images/persona.png" alt="Proto-personas" class="cs-block-img cs-block-img--white" />
+            <blockquote class="cs-quote" style="margin-top: 32px;">
+              <div>
+                <p class="cs-quote-text">"I want to be able to change parameters when required as easily as possible."</p>
+                <p class="cs-quote-attr"><strong>Nicolas</strong> – Final Assembly Line Planning Manager, Toulouse</p>
+              </div>
+            </blockquote>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Aligning on scope</h3>
+            <p class="cs-block-body">I facilitated a MoSCoW workshop with the full team to lock in what the MVP had to do and what could wait for later phases.</p>
+            <img src="/images/moscow.png" alt="MoSCoW workshop" class="cs-block-img cs-block-img--white" />
+            <p class="cs-block-body" style="margin-top: 32px;">My focus was Phase 1 - giving users a system they could adopt to create, edit, and consult PCPs. Without that foundation, Phase 2 (compliance) and Phase 3 (analysis) would have nothing reliable to build on.</p>
+            <div class="cs-phases">
+              <div class="cs-phase cs-phase--active">
+                <span class="cs-phase-badge cs-phase-badge--active">Phase 1</span>
+                <p class="cs-phase-title">PCP Management</p>
+                <p class="cs-phase-desc">Allows users to create, edit or consult a PCP</p>
+              </div>
+              <div class="cs-phase cs-phase--disabled">
+                <span class="cs-phase-badge cs-phase-badge--disabled">Phase 2</span>
+                <p class="cs-phase-title">PCP Compliance</p>
+                <p class="cs-phase-desc">Allows users to compare PCPs against planning</p>
+              </div>
+              <div class="cs-phase cs-phase--disabled">
+                <span class="cs-phase-badge cs-phase-badge--disabled">Phase 3</span>
+                <p class="cs-phase-title">PCP Analysis</p>
+                <p class="cs-phase-desc">Allows users to build the optimal planning scenario</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Attaching success metrics</h3>
+            <p class="cs-block-body">The team was cautious about committing to hard targets, so I reframed the conversation around practical measures I could validate during usability testing - task success and user satisfaction. This ensured we had immediate, testable indicators, while leaving space for longer-term adoption metrics like PCPs recorded and teams onboarded.</p>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">System to screens</h3>
+            <p class="cs-block-body">As I moved into design, I skipped low-fidelity sketching and worked directly in Sketch using Airbus's design system, giving me the building blocks to design at speed.</p>
+            <img src="/images/sketchds.png" alt="Sketch design system" class="cs-block-img cs-block-img--white" style="padding: 8px;" />
+            <p class="cs-block-body" style="margin-top: 32px;">I ran three rounds of design reviews with the project team, with data engineers validating the data points that needed surfacing. Feedback focused on content clarity, copy, and information architecture. What stood out was the team consistently referencing the personas - a sign the earlier alignment work had stuck.</p>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Validating the design</h3>
+            <p class="cs-block-body">With the PO's support, I arranged usability sessions with 4 key technical users during the design phase, enabling quick feedback loops and faster iteration.</p>
+<p class="cs-block-body">Several opportunities surfaced to improve clarity and ease of use. Rather than treating every finding as a must-fix, I worked with the PO to triage them. Some went straight into the MVP, others deferred to later phases, and a few were logged as future feature requests.</p>
+
+            <div class="finding-table">
+              <div class="finding-block-title">Findings</div>
+              <div class="finding-block-title">Solution</div>
+              <div class="finding-block-title">Feasibility</div>
+
+              <div class="finding-block-cell finding-block-cell--filled">Users needed better guidance when creating PCPs, the form felt long and overwhelming.</div>
+              <div class="finding-block-cell finding-block-cell--filled">Grouped fields into logical sections, added tooltips, links to existing support docs in help section.</div>
+              <div class="finding-block-cell finding-block-cell--filled"><span class="finding-badge finding-badge--green">Implemented</span></div>
+
+              <div class="finding-block-cell finding-block-cell--transparent">Users needed clearer visibility of the latest changes in PCP version history.</div>
+              <div class="finding-block-cell finding-block-cell--transparent">Highlight the most recent updates to improve clarity in the reading of versioning.</div>
+              <div class="finding-block-cell finding-block-cell--transparent"><span class="finding-badge finding-badge--green">Implemented</span></div>
+
+              <div class="finding-block-cell finding-block-cell--filled">Users asked what would happen if a value or data was not available in a dropdown.</div>
+              <div class="finding-block-cell finding-block-cell--filled">Use existing component to allow for new values to be created dynamically.</div>
+              <div class="finding-block-cell finding-block-cell--filled"><span class="finding-badge finding-badge--amber">Deferred</span></div>
+
+              <div class="finding-block-cell finding-block-cell--transparent">Users requested visualisation of PCP schemas (similar to current cards).</div>
+              <div class="finding-block-cell finding-block-cell--transparent">Logged as a feature request with the PO for future optimisation.</div>
+              <div class="finding-block-cell finding-block-cell--transparent"><span class="finding-badge finding-badge--red">Out of scope</span></div>
+            </div>
+            <p class="cs-block-body" style="margin-top: 32px;">Satisfaction with PCP management rose from 2.6 to 4.1 out of 5 - baseline captured in research interviews, post-score captured against the prototype with the same users.</p>
+
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study case-study--full">
+        <div class="cs-content">
+
+          <div class="cs-block cs-block--narrow">
+            <h2 class="cs-block-title">Solution</h2>
+            <p class="cs-block-body">The MVP gave the planning team one place to create, manage, and reference PCPs. Here's how it came together:</p>
+          </div>
+
+          <div class="cs-block cs-block--narrow">
+            <h3 class="cs-block-subtitle">Creating a PCP</h3>
+          </div>
+          <div class="cs-video-wrap">
+            <video class="cs-section-img" muted playsinline controls>
+              <source src="/videos/Create_PCP.mp4" type="video/mp4" />
+            </video>
+            <div class="cs-video-overlay"></div>
+            <div class="cs-video-flash" aria-hidden="true">
+              <svg class="cs-video-flash-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="6,3 20,12 6,21" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="cs-block cs-block--narrow">
+            <h3 class="cs-block-subtitle">Updating a PCP & Action</h3>
+          </div>
+          <div class="cs-video-wrap">
+            <video class="cs-section-img" muted playsinline controls>
+              <source src="/videos/updatepcp.mp4" type="video/mp4" />
+            </video>
+            <div class="cs-video-overlay"></div>
+            <div class="cs-video-flash" aria-hidden="true">
+              <svg class="cs-video-flash-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="6,3 20,12 6,21" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="cs-block cs-block--narrow">
+            <h3 class="cs-block-subtitle">Version history</h3>
+          </div>
+          <div class="cs-video-wrap">
+            <video class="cs-section-img" muted playsinline controls>
+              <source src="/videos/versioning_history.mp4" type="video/mp4" />
+            </video>
+            <div class="cs-video-overlay"></div>
+            <div class="cs-video-flash" aria-hidden="true">
+              <svg class="cs-video-flash-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="6,3 20,12 6,21" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">Handover</h2>
+            <p class="cs-block-body">To close the engagement, I ran a final handover session with the full team and the developer who would own the build. Staying within Airbus's design system throughout meant implementation confidence was high.</p>
+            <img src="/images/handover.png" alt="Handover" class="cs-block-img cs-block-img--white" style="padding: 8px;" />
+            <p class="cs-block-body" style="margin-top: 32px;">All deliverables were documented and shared so that anyone picking up the project had everything they needed to move forward.</p>
+            <p class="cs-block-body">I asked the PO to keep me updated if usage metrics became available and offered to remain a point of contact for any questions during development.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block cs-block--last">
+            <h2 class="cs-block-title">Impact</h2>
+            <p class="cs-block-body">As I was off-boarded shortly after the handover, I followed up with the planning team a month after hearing the MVP had launched, to check on the progress.</p>
+            <p class="cs-block-body">At that stage, they shared early usage data. While the numbers were promising, it was still too early to gauge any real impact. The true value of the MVP would become clearer as adoption grows, more teams come on board, and longer-term patterns of use emerge.</p>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const pausePath = `<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>`;
+    const playPath = `<polygon points="6,3 20,12 6,21" fill="currentColor"/>`;
+
+    document.querySelectorAll('.cs-video-wrap').forEach(wrap => {
+      const video = wrap.querySelector('video');
+      const flash = wrap.querySelector('.cs-video-flash');
+      const flashIcon = wrap.querySelector('.cs-video-flash-icon');
+      const overlay = wrap.querySelector('.cs-video-overlay');
+
+      overlay.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          flashIcon.innerHTML = playPath;
+        } else {
+          video.pause();
+          flashIcon.innerHTML = pausePath;
+        }
+        flash.classList.remove('show');
+        void flash.offsetWidth;
+        flash.classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>
