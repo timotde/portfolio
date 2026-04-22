@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vite build 2>&1)",
+      "Bash(npm run dev)"
+    ]
+  }
+}
