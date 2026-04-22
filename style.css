@@ -310,6 +310,30 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ============================================
+   SKELETON LOADER
+   ============================================ */
+.skeleton {
+  background: var(--text-subtle);
+  border-radius: 99px;
+}
+
+.skeleton-title {
+  height: 22px;
+  width: 60%;
+  margin-bottom: 12px;
+}
+
+.skeleton-line {
+  height: 14px;
+  margin-bottom: 8px;
+}
+
+.skeleton-line:last-child {
+  width: 75%;
+  margin-bottom: 0;
+}
+
+/* ============================================
    ABOUT SECTION
    ============================================ */
 .about-block { max-width: 620px; }
