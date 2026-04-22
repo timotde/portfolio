@@ -60,8 +60,11 @@ img, svg { display: block; max-width: 100%; }
   padding: 48px 40px;
   z-index: 50;
   overflow-y: auto;
+  scrollbar-width: none;
   border-right: 1px solid var(--border);
 }
+
+.sidebar::-webkit-scrollbar { display: none; }
 
 .sidebar-top {
   display: flex;
