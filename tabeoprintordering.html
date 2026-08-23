@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automating Tabeo's Print Requests — Timothy Desouza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- MOBILE TOP BAR -->
+  <div class="topbar" id="topbar">
+    <a href="index.html" class="topbar-logo" aria-label="Timothy DeSouza — Home">
+      <svg width="46" height="27" viewBox="0 0 68 40" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip_topbar)"><path d="M16.197 40C13.8258 40 11.8377 39.5987 10.2326 38.7962C8.66393 37.9936 7.49658 36.8263 6.7305 35.2941C5.96443 33.7255 5.58139 31.792 5.58139 29.4938V17.8386H2.73598C1.86046 17.8386 1.18559 17.6197 0.711354 17.1819C0.237118 16.7077 0 16.0693 0 15.2667C0 14.4277 0.237118 13.7893 0.711354 13.3516C1.18559 12.9138 1.86046 12.6949 2.73598 12.6949H5.58139V7.71545C5.58139 6.58458 5.87323 5.72731 6.45691 5.14363C7.07706 4.55996 7.93433 4.26812 9.02873 4.26812C10.1231 4.26812 10.9622 4.55996 11.5458 5.14363C12.1295 5.72731 12.4213 6.58458 12.4213 7.71545V12.6949H18.2216C19.0971 12.6949 19.772 12.9138 20.2462 13.3516C20.7205 13.7893 20.9576 14.4277 20.9576 15.2667C20.9576 16.0693 20.7205 16.7077 20.2462 17.1819C19.772 17.6197 19.0971 17.8386 18.2216 17.8386H12.4213V29.1108C12.4213 30.8618 12.8044 32.1751 13.5704 33.0506C14.3365 33.9261 15.5768 34.3639 17.2914 34.3639C17.9115 34.3639 18.4587 34.3091 18.933 34.1997C19.4072 34.0903 19.8267 34.0173 20.1915 33.9808C20.6293 33.9444 20.9941 34.0903 21.2859 34.4186C21.5777 34.7104 21.7237 35.3306 21.7237 36.279C21.7237 37.0086 21.596 37.6653 21.3406 38.249C21.1217 38.7962 20.7022 39.1792 20.0821 39.3981C19.6078 39.544 18.9877 39.6717 18.2216 39.7811C17.4555 39.927 16.7807 40 16.197 40Z" fill="#e0e0e0"/><path d="M29.5751 7.22297C28.2983 7.22297 27.2951 6.91289 26.5655 6.29274C25.8724 5.63611 25.5258 4.74235 25.5258 3.61148C25.5258 2.44413 25.8724 1.55038 26.5655 0.930222C27.2951 0.310069 28.2983 -7.62939e-06 29.5751 -7.62939e-06C30.8883 -7.62939e-06 31.8915 0.310069 32.5846 0.930222C33.2777 1.55038 33.6243 2.44413 33.6243 3.61148C33.6243 4.74235 33.2777 5.63611 32.5846 6.29274C31.8915 6.91289 30.8883 7.22297 29.5751 7.22297Z" fill="#e0e0e0"/><path d="M29.464 39.8905C28.3696 39.8905 27.5306 39.5987 26.9469 39.015C26.3633 38.3949 26.0714 37.5194 26.0714 36.3885V15.7045C26.0714 14.5736 26.3633 13.7164 26.9469 13.1327C27.5306 12.549 28.3514 12.2572 29.4093 12.2572C30.4672 12.2572 31.288 12.549 31.8717 13.1327C32.4554 13.7164 32.7472 14.5736 32.7472 15.7045V19.699L32.1453 18.0574C32.8749 16.2335 34.0058 14.7925 35.5379 13.7346C37.0701 12.6767 38.894 12.1477 41.0099 12.1477C43.1622 12.1477 44.9314 12.6584 46.3177 13.6799C47.7039 14.7013 48.6706 16.2699 49.2178 18.3858H48.4517C49.1813 16.4523 50.3851 14.9384 52.0632 13.844C53.7413 12.7132 55.6747 12.1477 57.8635 12.1477C59.9063 12.1477 61.5844 12.549 62.8977 13.3516C64.2474 14.1541 65.2506 15.3762 65.9073 17.0178C66.5639 18.6229 66.8922 20.6657 66.8922 23.1464V36.3885C66.8922 37.5194 66.5821 38.3949 65.962 39.015C65.3783 39.5987 64.5393 39.8905 63.4449 39.8905C62.3505 39.8905 61.5114 39.5987 60.9278 39.015C60.3441 38.3949 60.0523 37.5194 60.0523 36.3885V23.42C60.0523 21.3771 59.7057 19.8814 59.0126 18.933C58.356 17.9845 57.2251 17.5102 55.62 17.5102C53.8325 17.5102 52.428 18.1486 51.4066 19.4254C50.3852 20.6657 49.8744 22.3985 49.8744 24.6238V36.3885C49.8744 37.5194 49.5826 38.3949 48.9989 39.015C48.4152 39.5987 47.5762 39.8905 46.4818 39.8905C45.3874 39.8905 44.5302 39.5987 43.91 39.015C43.3263 38.3949 43.0345 37.5194 43.0345 36.3885V23.42C43.0345 21.3771 42.6879 19.8814 41.9948 18.933C41.3382 17.9845 40.2255 17.5102 38.6569 17.5102C36.8694 17.5102 35.465 18.1486 34.4435 19.4254C33.4221 20.6657 32.9114 22.3985 32.9114 24.6238V36.3885C32.9114 38.7232 31.7623 39.8905 29.464 39.8905Z" fill="#e0e0e0"/></g><defs><clipPath id="clip_topbar"><rect width="67.1429" height="40" fill="white"/></clipPath></defs></svg>
+    </a>
+    <button class="topbar-toggle" id="topbar-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- PAGE LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <a href="index.html" class="cs-back">
+        <i data-lucide="arrow-left"></i> Back
+      </a>
+
+      <h1 class="cs-title">Automating Tabeo's print requests</h1>
+      <p class="sidebar-intro">Using Claude Cowork to automate a print ordering workflow, saving 4 hrs/week of design time.</p>
+
+      <div class="cs-meta">
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Role</span>
+          <span class="cs-meta-value">Senior Product Designer</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Timeline</span>
+          <span class="cs-meta-value">1 week (Q2 2026)</span>
+        </div>
+        <div class="cs-meta-item">
+          <span class="cs-meta-label">Team</span>
+          <span class="cs-meta-value">Customer Success</span>
+        </div>
+      </div>
+
+      <div class="cs-tags card-tags">
+        <span>AI-assisted workflow</span>
+        <span>Automation</span>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- MOBILE HEADER (case study info, hidden on desktop) -->
+      <div class="cs-mobile-header">
+        <a href="index.html" class="cs-back">
+          <i data-lucide="arrow-left"></i> Back
+        </a>
+        <h1 class="cs-title">Automating Tabeo's print requests</h1>
+        <p class="sidebar-intro">Using Claude Cowork to automate a print ordering workflow, saving 4 hrs/week of design time.</p>
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Senior Product Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Timeline</span>
+            <span class="cs-meta-value">1 week (Q2 2026)</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Team</span>
+            <span class="cs-meta-value">Customer Success</span>
+          </div>
+        </div>
+        <div class="cs-tags card-tags">
+          <span>AI-assisted workflow</span>
+          <span>Automation</span>
+        </div>
+      </div>
+
+      <img src="/images/tabeo_cover_hero.png" alt="Automating Tabeo's print requests" class="cs-hero-img" style="object-position: top center;" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">TL;DR</h2>
+            <p class="cs-block-body"><a href="https://www.tabeo.co.uk" target="_blank" rel="noopener noreferrer" class="inline-link">Tabeo</a> helps dental practices offer patients finance. To promote finance in-practice, merchants get complimentary branded posters and flyers, but ordering meant Customer Success manually pulling merchant details from an internal admin tool, updating Canva templates, and placing print orders by hand, one at a time, across four different tools.</p>
+            <p class="cs-block-body">When this task was reassigned from Customer Success to Design with no warning, I went from occasional design polish to processing up to ~40 orders a week. I used <strong style="font-weight: 600;">Claude Cowork</strong> to rebuild the entire manual process as an automated, browser-driven workflow, cutting the time per order from 10 minutes to effectively zero, and reclaiming design capacity for the work that actually needed it: consolidating Tabeo's 3 fragmented design systems.</p>
+            <div class="cs-video-wrap" style="margin-top: 32px;">
+              <video class="cs-section-img" muted playsinline controls data-playback-rate="2">
+                <source src="/videos/tabeo_cowork_solution.mp4" type="video/mp4" />
+              </video>
+              <div class="cs-video-overlay"></div>
+              <div class="cs-video-flash" aria-hidden="true">
+                <svg class="cs-video-flash-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="6,3 20,12 6,21" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <img src="/images/orders_processed.png" alt="Orders processed" class="cs-block-img" style="border-radius: 0; border: none;" />
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">Insight</h2>
+            <div class="cs-stats">
+              <div class="cs-stat">
+                <span class="cs-stat-value cs-stat-value--positive">5 days</span>
+                <span class="cs-stat-label">from problem to live workflow</span>
+              </div>
+              <div class="cs-stat">
+                <span class="cs-stat-value cs-stat-value--positive">4 hrs</span>
+                <span class="cs-stat-label">of design time saved per week</span>
+              </div>
+              <div class="cs-stat">
+                <span class="cs-stat-value cs-stat-value--positive">180</span>
+                <span class="cs-stat-label">automated orders processed in ~7 week window</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">More orders than hours</h2>
+            <p class="cs-block-body">Growing active merchants is one of Tabeo's north star metrics. Print materials, posters and flyers promoting finance in-practice, are a small but meaningful lever for that: something merchants get free when onboarded or reactivated.</p>
+            <p class="cs-block-body">Last year, I built these as Canva templates so Customer Success could edit and apply each merchant's branding (when necessary), with no design support needed. It seemed to be working well.</p>
+            <p class="cs-block-body">In May 2026, leadership got feedback that Customer Success was stretched thin and struggling to keep up. The business reassigned the entire print-ordering process to Design, mandated directly by the CEO.</p>
+            <p class="cs-block-body">Here's what fulfilling a single order actually involved, once it landed with Design:</p>
+
+            <img src="/images/tabeo-print-map-snapshot.png" alt="Snapshot of the current print order process experience map" class="cs-block-img" style="border-radius: 0; border: none;" />
+            <a href="https://www.figma.com/board/hTP8WWpqoESbOn7un8nwly/Experience-Map---Print-ordering?node-id=0-1&t=aWMiBXwMRvXOLJ0S-1" target="_blank" rel="noopener noreferrer" class="cs-video-caption-link">
+              View full experience map <i data-lucide="square-arrow-out-up-right"></i>
+            </a>
+
+            <div class="cs-challenges">
+              <div class="cs-challenge">
+                <div class="cs-challenge-icon"><i data-lucide="timer"></i></div>
+                <div class="cs-challenge-text">
+                  <p class="cs-challenge-title">A hard 24-hour SLA</p>
+                  <p class="cs-challenge-desc">Orders submitted to the print company within 24 hours of request, with no buffer for volume.</p>
+                </div>
+              </div>
+              <div class="cs-challenge">
+                <div class="cs-challenge-icon"><i data-lucide="gauge"></i></div>
+                <div class="cs-challenge-text">
+                  <p class="cs-challenge-title">Not built for scale</p>
+                  <p class="cs-challenge-desc">Manageable at 1-2 orders a day but broke down entirely at 30 in a single day.</p>
+                </div>
+              </div>
+            </div>
+            <p class="cs-block-body cs-block-body--spaced">The result: work that should have taken minutes was <span style="color: #FF6952;">consuming hours</span>, pulled directly from the time needed for product and design-ops work.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">What I did &amp; key decisions</h2>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Proposing a real fix</h3>
+            <p class="cs-block-body">My first instinct wasn't automation, it was to add in-app functionality. I created a quick prototype of an ordering interface directly in the internal admin tool for CS to use when onboarding the merchant.</p>
+            <p class="cs-block-body">I shared it with the Product Manager and Tech Lead to see if it was something we could bring into a future sprint. I needed Tech to help integrate with a print company's API, but we couldn't realistically look at it until around the end of Q3, a timeline I couldn't wait for.</p>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Choosing to automate instead</h3>
+            <p class="cs-block-body">While I was still working through the manual flow, I got hit with a request for thirty orders in one go. There was no sane way I could manage that manually. I mentioned my dilemma to the front-end team, and they suggested using Claude Cowork.</p>
+            <p class="cs-block-body">I looked at how I could harness Cowork for my problem, and settled on using browser control, connected via Claude in Chrome, to replicate my own manual workflow, step by step, exactly as I performed it.</p>
+            <div class="cs-flow-diagram">
+              <div class="cs-flow-browser">
+                <div class="cs-flow-tools">
+                  <div class="cs-flow-tool cs-flow-tool--1">
+                    <span class="cs-flow-tool-name">1. Google Sheets</span>
+                    <p class="cs-flow-tool-desc">Read the Google Sheet (merchant ID, order type, regulated/unregulated)</p>
+                    <span class="cs-flow-tool-badge"><img src="/images/claude.svg" alt="" width="15" height="14" /> Google Sheet Connector</span>
+                  </div>
+                  <div class="cs-flow-tool cs-flow-tool--2">
+                    <span class="cs-flow-tool-name">2. Tabeo Admin Panel</span>
+                    <p class="cs-flow-tool-desc">Log into admin panel (pull trading address and phone number)</p>
+                    <span class="cs-flow-tool-badge"><img src="/images/claude.svg" alt="" width="15" height="14" /> Browser</span>
+                  </div>
+                  <div class="cs-flow-tool cs-flow-tool--3">
+                    <span class="cs-flow-tool-name">3. PrintPond</span>
+                    <p class="cs-flow-tool-desc">Open PrintPond (build the order, paste in delivery details, send)</p>
+                    <span class="cs-flow-tool-badge"><img src="/images/claude.svg" alt="" width="15" height="14" /> Browser</span>
+                  </div>
+                  <div class="cs-flow-tool cs-flow-tool--4">
+                    <span class="cs-flow-tool-name">4. Google Sheets</span>
+                    <p class="cs-flow-tool-desc">Mark the sheet row as done, add order number and today's date</p>
+                    <span class="cs-flow-tool-badge"><img src="/images/claude.svg" alt="" width="15" height="14" /> Google Sheet Connector</span>
+                  </div>
+                  <div class="cs-flow-connector--h1"></div>
+                  <div class="cs-flow-connector--h2"></div>
+                  <div class="cs-flow-connector--v"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Clean data, human checkpoints</h3>
+            <p class="cs-block-body">Customer Success had been logging orders in free text. Before automating anything, I cleaned up the spreadsheet and converted key fields (order type, regulated status, dates) into fixed dropdown values Claude could reliably parse.</p>
+            <img src="/images/tabeo-print-sheet-clean.png" alt="Cleaned up order spreadsheet with fixed dropdown values" class="cs-block-img" style="margin-bottom: 56px; border-radius: 0;" />
+            <p class="cs-block-body">When ready to test, every automated order paused for my approval before checkout, showing the full summary (merchant, files, delivery address, cost) before it went to print.</p>
+            <p class="cs-block-body">Non-standard orders, custom branding requests, or merchant IDs with no match in the internal admin tool all got flagged and stopped rather than silently processed.</p>
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Debugging in production</h3>
+            <p class="cs-block-body">Building this wasn't frictionless. A few things broke before it worked reliably:</p>
+            <ul class="cs-block-list">
+              <li>A missing browser connection had to be set up from scratch</li>
+              <li>A file permissions gap with Google Drive meant PDFs had to be uploaded directly into the Claude Cowork session rather than pulled from Downloads</li>
+              <li>A lost connection mid-checkout once silently reset the delivery form to an old saved address, caught only because I checked the order summary before confirming, which is exactly why that checkpoint stayed in the process</li>
+            </ul>
+            <img src="/images/tabeo-print-debugging.png" alt="Debugging the automated print ordering workflow" class="cs-block-img" style="border-radius: 0;" />
+          </div>
+
+          <div class="cs-block">
+            <h3 class="cs-block-subtitle">Scaling up deliberately</h3>
+            <p class="cs-block-body">After the first five orders, where I reviewed every step closely, I moved to spot-checking, then to trusting the system outright. I chose to keep the process semi-manual rather than fully autonomous while I built confidence in it, rather than removing myself from the loop immediately.</p>
+            <p class="cs-block-body">Once trusted, I turned the workflow into a reusable Claude skill, so it could be triggered reliably on demand.</p>
+            <img src="/images/tabeo-print-skill.png" alt="Reusable Claude skill for print ordering" class="cs-block-img cs-block-img--white" />
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block">
+            <h2 class="cs-block-title">Solution</h2>
+            <h3 class="cs-block-subtitle">File upload and print configuration</h3>
+            <div class="cs-video-wrap" style="margin-top: 32px;">
+              <video class="cs-section-img" muted playsinline controls data-playback-rate="2">
+                <source src="/videos/tabeo_cowork_solution.mp4" type="video/mp4" />
+              </video>
+              <div class="cs-video-overlay"></div>
+              <div class="cs-video-flash" aria-hidden="true">
+                <svg class="cs-video-flash-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="6,3 20,12 6,21" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="cs-block-subtitle" style="margin-top: 80px;">Order fulfilled tracking</h3>
+            <div class="cs-video-wrap" style="margin-top: 32px;">
+              <video class="cs-section-img" muted playsinline controls data-playback-rate="2">
+                <source src="/videos/order-number-entry.mp4" type="video/mp4" />
+              </video>
+              <div class="cs-video-overlay"></div>
+              <div class="cs-video-flash" aria-hidden="true">
+                <svg class="cs-video-flash-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="6,3 20,12 6,21" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <p class="cs-block-body cs-block-body--spaced">Two scheduled tasks were set up to manage this workflow:</p>
+            <div class="cs-challenges">
+              <div class="cs-challenge">
+                <div class="cs-challenge-icon"><i data-lucide="printer"></i></div>
+                <div class="cs-challenge-text">
+                  <p class="cs-challenge-title">Daily print run</p>
+                  <p class="cs-challenge-desc">Runs from Monday-Friday at 5:00pm, checking the sheet and processing any new orders.</p>
+                </div>
+              </div>
+              <div class="cs-challenge">
+                <div class="cs-challenge-icon"><i data-lucide="package-search"></i></div>
+                <div class="cs-challenge-text">
+                  <p class="cs-challenge-title">Tracking ID capture</p>
+                  <p class="cs-challenge-desc">Runs on Friday evening, checking for a delivery tracking ID and writing it back to the sheet.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block cs-block--last">
+            <h2 class="cs-block-title">Impact</h2>
+            <div class="cs-stats">
+              <div class="cs-stat">
+                <span class="cs-stat-value cs-stat-value--positive">180</span>
+                <span class="cs-stat-label">automated orders processed in ~7 week window</span>
+              </div>
+              <div class="cs-stat">
+                <span class="cs-stat-value cs-stat-value--positive">18 hrs</span>
+                <span class="cs-stat-label">projected monthly time saved for design team</span>
+              </div>
+              <div class="cs-stat">
+                <span class="cs-stat-value cs-stat-value--positive">100%</span>
+                <span class="cs-stat-label">satisfaction score and a smile from me</span>
+              </div>
+            </div>
+            <p class="cs-block-body cs-block-body--spaced">At roughly 10 minutes of manual work per order, that's on track to save over 18 hours of design time a month (based on requests to date) - not counting the harder to quantify cost of context switching. Time better spent consolidating our 3 design systems into one, and improving documentation and tooling for the wider design team.</p>
+            <p class="cs-block-body cs-block-body--spaced">The Customer Success team were also really appreciative that we were consistently meeting the 24-hour service-level agreement.</p>
+            <img src="/images/CS-feedback.png" alt="Slack feedback from Customer Success on the automated order process" class="cs-block-img" style="border-radius: 0; border: none;" />
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="cs-divider" />
+
+      <div class="case-study">
+        <div class="cs-content">
+
+          <div class="cs-block cs-block--last">
+            <h2 class="cs-block-title">What's next?</h2>
+            <p class="cs-block-body">The next item on my list is custom branding support, merchant logo and colours. It's an edge case, but one that could crop up for key accounts. Neither Canva or Figma's API could handle both on their own, so I've scoped a templating approach instead: rebuilding the assets as HTML/CSS templates, rendered to a print-ready PDF per merchant.</p>
+            <p class="cs-block-body">The Plans product squad has a similar, if lighter, merchant marketing need, and I'm now helping their designer adapt the same approach for their workflow. It's early days, and the process still needs refining for their specific use case.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script type="module" src="/casestudy.js"></script>
+  <script>
+    const pausePath = `<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>`;
+    const playPath = `<polygon points="6,3 20,12 6,21" fill="currentColor"/>`;
+
+    document.querySelectorAll('.cs-video-wrap').forEach(wrap => {
+      const video = wrap.querySelector('video');
+      const flash = wrap.querySelector('.cs-video-flash');
+      const flashIcon = wrap.querySelector('.cs-video-flash-icon');
+      const overlay = wrap.querySelector('.cs-video-overlay');
+
+      if (video.dataset.playbackRate) {
+        const rate = parseFloat(video.dataset.playbackRate);
+        video.defaultPlaybackRate = rate;
+        video.playbackRate = rate;
+      }
+
+      overlay.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          flashIcon.innerHTML = playPath;
+        } else {
+          video.pause();
+          flashIcon.innerHTML = pausePath;
+        }
+        flash.classList.remove('show');
+        void flash.offsetWidth;
+        flash.classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>

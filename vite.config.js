@@ -6,6 +6,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         airbus: 'airbus.html',
+        tabeoprintordering: 'tabeoprintordering.html',
       },
     },
   },

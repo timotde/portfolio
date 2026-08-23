@@ -1,8 +1,8 @@
 // ============================================
 // ICONS
 // ============================================
-import { createIcons, SquareArrowOutUpRight, ArrowLeft, DatabaseZap, EyeOff, Pencil } from 'lucide';
-createIcons({ icons: { SquareArrowOutUpRight, ArrowLeft, DatabaseZap, EyeOff, Pencil } });
+import { createIcons, SquareArrowOutUpRight, ArrowLeft, DatabaseZap, EyeOff, Pencil, Gauge, Timer, Printer, PackageSearch, Sparkle } from 'lucide';
+createIcons({ icons: { SquareArrowOutUpRight, ArrowLeft, DatabaseZap, EyeOff, Pencil, Gauge, Timer, Printer, PackageSearch, Sparkle } });
 
 // ============================================
 // MOBILE SIDEBAR TOGGLE
