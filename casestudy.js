@@ -78,3 +78,19 @@ if (heroMain && heroStack) {
   heroMain.addEventListener('load', sync);
   sync();
 }
+
+// ============================================
+// BACK BUTTON — CURSOR SHEEN (same as the homepage buttons)
+// ============================================
+document.querySelectorAll('.action-email').forEach(btn => {
+  btn.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    const r = btn.getBoundingClientRect();
+    btn.style.setProperty('--px', `${e.clientX - r.left}px`);
+    btn.style.setProperty('--py', `${e.clientY - r.top}px`);
+  });
+  btn.addEventListener('pointerleave', () => {
+    btn.style.removeProperty('--px');
+    btn.style.removeProperty('--py');
+  });
+});
