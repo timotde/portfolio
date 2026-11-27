@@ -4,7 +4,7 @@
 :root {
   --bg:           #141212;
   --sidebar-bg:   #1b1919;
-  --card-bg:      #282622;
+  --card-bg:      #242322; /* slightly darker, less warm than the old #282622 */
   --border:       #211e1e;
   --stroke:       rgba(255, 255, 255, 0.14); /* 0.5px edges: sidebar divider + project cards */
 
@@ -467,8 +467,11 @@ img, svg { display: block; max-width: 100%; }
    with 4px corners (half the card's) so it reads as nested; a true concentric radius would be below zero at this inset.
    The image is left clean; title and description sit below it.
    Title and description are always visible, so nothing depends on hover. */
+/* Homepage background matches the sidebar, so the page reads as one surface with the cards on top */
+body:has(.masonry) { background: var(--sidebar-bg); }
+
 .card {
-  background: var(--sidebar-bg); /* same as the sidebar panel; buttons keep --card-bg */
+  background: var(--card-bg); /* same fill as the sidebar buttons */
   border-radius: 8px;
   /* Height = image (fixed 6:5) + text, so nothing clips at narrow widths; the grid stretches
      cards in a row to the same height and the titles line up */
@@ -605,7 +608,7 @@ img, svg { display: block; max-width: 100%; }
   /* Whole surface responds: background lifts a step, edges firm up (14% → 28%) */
   .card:hover {
     --edge: rgba(255, 255, 255, 0.28);
-    background: #232121;
+    background: #2c2b2a; /* one step up from --card-bg */
     box-shadow:
       inset 0.5px 0 0 var(--edge), inset -0.5px 0 0 var(--edge),
       inset 0 0.5px 0 var(--edge), inset 0 -0.5px 0 var(--edge);
@@ -619,7 +622,7 @@ img, svg { display: block; max-width: 100%; }
 /* Keyboard focus matches hover */
 .card:has(.card-link-overlay:focus-visible) {
   --edge: rgba(255, 255, 255, 0.28);
-  background: #232121;
+  background: #2c2b2a; /* one step up from --card-bg */
   box-shadow:
     inset 0.5px 0 0 var(--edge), inset -0.5px 0 0 var(--edge),
     inset 0 0.5px 0 var(--edge), inset 0 -0.5px 0 var(--edge);
