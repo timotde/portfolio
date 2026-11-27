@@ -2,8 +2,8 @@
    VARIABLES
    ============================================ */
 :root {
-  --bg:           #141212;
-  --sidebar-bg:   #1b1919;
+  --bg:           #141313; /* neutral near-black (was #141212, slightly pink) */
+  --sidebar-bg:   #141313; /* same near-black as the page, so sidebar and card area read as one surface */
   --card-bg:      #242322; /* slightly darker, less warm than the old #282622 */
   --border:       #211e1e;
   --stroke:       rgba(255, 255, 255, 0.14); /* 0.5px edges: sidebar divider + project cards */
@@ -467,9 +467,6 @@ img, svg { display: block; max-width: 100%; }
    with 4px corners (half the card's) so it reads as nested; a true concentric radius would be below zero at this inset.
    The image is left clean; title and description sit below it.
    Title and description are always visible, so nothing depends on hover. */
-/* Homepage background matches the sidebar, so the page reads as one surface with the cards on top */
-body:has(.masonry) { background: var(--sidebar-bg); }
-
 .card {
   background: var(--card-bg); /* same fill as the sidebar buttons */
   border-radius: 8px;
